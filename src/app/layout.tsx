@@ -9,7 +9,7 @@ import Links from '@/components/links'
 const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'John Doe',
+  title: 'Muhamad Aldio Yaspindo',
 }
 
 export default function RootLayout({

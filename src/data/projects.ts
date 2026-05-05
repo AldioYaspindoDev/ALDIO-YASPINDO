@@ -16,7 +16,7 @@ const PROJECTS: {
     name: 'Cantigi Rent Car',
     description: 'The Vehicle Rental Booking System of PT. Cantigi International Tours is a web-based platform designed to make online vehicle rental easy. It includes vehicle management, customer bookings, driver coordination, payment processing, and transaction reporting. Our goal: improve operational efficiency and customer comfort, while also boosting the quality of MSMEs in Padang.',
     liveLink: 'https://cantigitours.com',
-    previewImage: '/ctgi/Main.jpg',
+    previewImage: '/ctgi/Main.png',
     repoUrl: 'https://github.com/Aldioyaspindo/PBL-Kelompok-5',
   },
   {
@@ -27,10 +27,10 @@ const PROJECTS: {
     repoUrl: 'https://github.com/AldioYaspindoDev/Ellegance-Apps',
   },
   {
-    name: 'Project 4',
+    name: 'Cooming Soon',
     description: 'Lorem ipsum dolor sit amet',
     liveLink: 'https://google.com',
-    previewImage: '/project4.png',
+    previewImage: '/CoomingSooon.png',
     repoUrl: 'https://github.com',
   },
 ]
