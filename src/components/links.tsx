@@ -36,7 +36,7 @@ export default function Links() {
   ]
 
   return (
-    <footer className="mt-12 sm:mt-20 w-screen relative left-1/2 -translate-x-1/2 border-t-4 border-border bg-background py-10 sm:py-16 px-4 sm:px-10 overflow-hidden">
+    <footer className="mt-5 sm:mt-5 w-screen relative left-1/2 -translate-x-1/2 border-t-4 border-border bg-background py-10 sm:py-16 px-4 sm:px-10 overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-main/5 rounded-full blur-3xl" />
       

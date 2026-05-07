@@ -1,69 +1,146 @@
 'use client'
 
 import PROJECTS from '@/data/projects'
-import { Button } from '@/components/ui/button'
-import { ScrollArea } from '@/components/ui/scroll-area'
 import * as motion from "motion/react-client"
+import { useRouter } from 'next/navigation'
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination'
+
 
 export default function Work() {
+  const router = useRouter();
   return (
-    <div className='py-12 sm:py-20'>
+    <section className="py-10 w-screen relative left-1/2 -translate-x-1/2 px-4 sm:px-10">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="mx-auto max-w-full">
+          <h2 className="text-xl sm:text-2xl text-center md:text-4xl pb-2 font-heading">THE PROJECT</h2>
+          <p className="text-sm sm:text-base md:text-xl text-center pb-8 sm:pb-12 font-base max-w-2xl mx-auto px-2">
+            Berikut adalah project-project yang pernah saya kerjakan
+          </p>
+        </div>
 
-      <Button className='w-full mb-5 text-main bg-background'>
-        <span className='text-base sm:text-lg font-heading'>Project</span>
-      </Button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-8">
+          {PROJECTS.slice(0, 3).map((project, id) => {
+            return (
+              <motion.div
+                className="border-border shadow-shadow rounded-base bg-background border-2 p-4 sm:p-5 flex flex-col justify-between transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
+                key={id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: id * 0.15, ease: "easeOut" }}
+                onClick={() => router.push(`/projects/${project.slug}`)}
+              >
+                <div>
+                  <div className="border-border shadow-shadow rounded-base border-2 overflow-hidden bg-background">
+                    {project.video ? (
+                      project.video.includes('youtube.com') || project.video.includes('youtu.be') ? (
+                        <div className="w-full h-40 sm:h-56 relative">
+                          <iframe
+                            className="absolute top-0 left-0 w-full h-full pointer-events-none"
+                            src={`https://www.youtube.com/embed/${project.video.split('/').pop()?.split('?')[0]}?autoplay=1&mute=1&loop=1&playlist=${project.video.split('/').pop()?.split('?')[0]}&controls=0&modestbranding=1&rel=0`}
+                            allow="autoplay; encrypted-media"
+                            loading="lazy"
+                          />
+                        </div>
+                      ) : (
+                        <video
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-40 sm:h-56 object-cover"
+                          poster={project.previewImage}
+                        >
+                          <source src={project.video} type="video/mp4" />
+                          Browser Anda tidak mendukung pemutaran video.
+                        </video>
+                      )
+                    ) : (
+                      <img
+                        className="w-full h-40 sm:h-56 object-cover"
+                        src={`${project.previewImage}`}
+                        alt={project.name}
+                      />
+                    )}
+                  </div>
 
-      <ScrollArea className='w-full rounded-base h-full text-foreground mb-8 sm:mb-10 border-2 border-border bg-background p-3 sm:p-4 shadow-shadow'>
-        <p className="text-sm sm:text-base">
-          Berikut adalah project yang pernah saya buat – masing-masing dirancang untuk memecahkan masalah nyata dan memberikan dampak, dari digitalisasi UMKM hingga efisiensi operasional perusahaan.
-        </p>
-      </ScrollArea>
+                  <div className="text-foreground font-base mt-4 sm:mt-6">
+                    <h2 className="font-heading text-lg sm:text-xl md:text-2xl">
+                      {project.name}
+                    </h2>
 
-      <div className="flex flex-col gap-4 sm:gap-5">
-        {PROJECTS.map((project, id) => {
-          return (
-            <motion.div
-              className="border-border shadow-shadow rounded-base bg-background border-2 p-3 sm:p-5"
-              key={id}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.4, delay: id * 0.1, ease: "easeOut" }}
-            >
-              <img
-                className="rounded-base w-full h-40 sm:h-56 md:h-full object-cover"
-                src={`${project.previewImage}`}
-                alt={project.name}
-              />
+                    <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base line-clamp-3 opacity-90">
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
 
-              <div className="text-foreground font-base mt-4 sm:mt-5">
-                <h2 className="font-heading text-lg sm:text-xl md:text-2xl">
-                  {project.name}
-                </h2>
-
-                <p className="mt-2 text-xs sm:text-sm md:text-base">{project.description}</p>
-
-                <div className="mt-5 sm:mt-8 grid grid-cols-2 gap-3 sm:gap-5">
+                {/* button rute */}
+                <div className="mt-6 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-4">
                   <a
-                    className="border-border bg-background text-foreground shadow-shadow rounded-base font-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY cursor-pointer border-2 px-3 sm:px-4 py-2 text-center text-xs sm:text-sm md:text-base transition-all hover:shadow-none"
+                    className="border-border bg-background text-foreground shadow-shadow rounded-base font-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY cursor-pointer border-2 px-3 sm:px-4 py-2 text-center text-xs transition-all hover:shadow-none sm:text-sm"
                     href={project.liveLink}
                     target="_blank"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     Visit
                   </a>
                   <a
-                    className="border-border bg-background text-foreground shadow-shadow rounded-base font-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY cursor-pointer border-2 px-3 sm:px-4 py-2 text-center text-xs sm:text-sm md:text-base transition-all hover:shadow-none"
+                    className="border-border bg-background text-foreground shadow-shadow rounded-base font-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY cursor-pointer border-2 px-3 sm:px-4 py-2 text-center text-xs transition-all hover:shadow-none sm:text-sm"
                     href={project.repoUrl}
                     target="_blank"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     Github
                   </a>
+
                 </div>
-              </div>
-            </motion.div>
-          )
-        })}
+
+              </motion.div>
+            )
+          })}
+        </div>
+
       </div>
-    </div>
+      <div className="mt-20">
+
+
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious href="#" />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#">1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" isActive>
+              2
+            </PaginationLink>
+          </PaginationItem>
+          <div className="items-center md:flex hidden">
+            <PaginationItem>
+              <PaginationLink href="#">3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+          </div>
+          <PaginationItem>
+            <PaginationNext href="#" />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+
+      </div>
+    </section>
   )
 }

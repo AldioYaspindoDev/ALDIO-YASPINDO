@@ -23,7 +23,7 @@ export default function RootLayout({
         <body className={`${montserrat.className} bg-grid-pattern min-h-screen`}>
           <ThemeProvider attribute="class" disableTransitionOnChange>
             <Nav />
-            <div className="text-foreground mx-auto w-[750px] max-w-full px-5 pt-28">
+            <div className="text-foreground mx-auto max-w-[1200px] px-5 pt-28 pb-10">
               {children}
             </div>
             <Links />

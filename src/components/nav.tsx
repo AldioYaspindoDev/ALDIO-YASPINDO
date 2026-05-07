@@ -57,8 +57,8 @@ export default function Nav() {
         {/* KANAN: Button / ThemeSwitcher */}
         <div className="flex items-center gap-2 sm:gap-3">
           <ThemeSwitcher />
-          <Avatar className='w-8 h-8 sm:w-12 sm:h-12'>
-            <AvatarImage src="/Logo-WD2.png" alt="@shadcn" className="dark:invert" />
+          <Avatar className='w-8 h-12 sm:w-12 sm:h-16'>
+            <AvatarImage src="/Profile.jpg" alt="@shadcn"/>
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
 

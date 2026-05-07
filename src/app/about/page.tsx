@@ -23,14 +23,8 @@ export default function About() {
           seorang <span className="underline decoration-main decoration-4 underline-offset-4">Software Engineer</span> yang 
           berbasis di Padang, Sumatera Barat.
         </p>
-        <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-3 sm:mb-4">
-          Saya passionate dalam membangun aplikasi web yang robust, scalable, dan berpusat pada 
-          pengguna. Saya menikmati proses mengubah masalah yang kompleks menjadi solusi digital 
-          yang elegan dan mudah digunakan.
-        </p>
-        <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-          Di luar coding, saya aktif berbagi pengetahuan melalui konten di berbagai platform 
-          dan selalu antusias untuk belajar teknologi baru.
+        <p className="text-sm sm:text-base md:text-lg leading-relaxed text-justify mb-3 sm:mb-4">
+          Sebagai seorang Software Engineer, saya berdedikasi pada perancangan dan pengembangan ekosistem digital end-to-end yang robust dan scalable. Kapasitas teknis saya mencakup rekayasa arsitektur Backend berkinerja tinggi, implementasi Frontend yang responsif, serta pendekatan UI/UX yang berpusat pada efisiensi pengguna. Selain pengembangan aplikasi fundamental, saya memiliki fokus analitis pada integrasi model Machine Learning untuk mengoptimalkan kapabilitas dan kecerdasan sistem. Saya berkomitmen pada continuous learning dan penerapan praktik rekayasa perangkat lunak terbaik dalam setiap baris kode yang saya bangun.
         </p>
       </motion.div>
 

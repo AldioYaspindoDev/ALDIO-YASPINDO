@@ -2,18 +2,13 @@
 
 import PROJECTS from '@/data/projects'
 import * as motion from "motion/react-client"
+import { useRouter } from 'next/navigation'
 
 export default function LatestProject() {
+    const router = useRouter();
+
     return (
-        /* 
-           Tambahkan w-screen, left-1/2, dan -translate-x-1/2 
-           agar komponen bisa keluar dari batasan container 750px 
-        */
         <section className="py-10 w-screen relative left-1/2 -translate-x-1/2 px-4 sm:px-10">
-            {/* 
-               Gunakan max-w yang lebih besar (misal 1200px) agar 
-               kontennya melebar tapi tetap rapi di tengah layar besar 
-            */}
             <div className="max-w-[1200px] mx-auto">
                 <div className="mx-auto max-w-full">
                     <h2 className="text-xl sm:text-2xl text-center md:text-4xl pb-2 font-heading">LATEST PROJECT</h2>
@@ -32,14 +27,40 @@ export default function LatestProject() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, amount: 0.2 }}
                                 transition={{ duration: 0.5, delay: id * 0.15, ease: "easeOut" }}
+                                onClick={() => router.push(`/projects/${project.slug}`)}
                             >
                                 <div>
                                     <div className="border-border shadow-shadow rounded-base border-2 overflow-hidden bg-background">
-                                        <img
-                                            className="w-full h-40 sm:h-56 object-cover" 
-                                            src={`${project.previewImage}`}
-                                            alt={project.name}
-                                        />
+                                        {project.video ? (
+                                            project.video.includes('youtube.com') || project.video.includes('youtu.be') ? (
+                                                <div className="w-full h-40 sm:h-56 relative">
+                                                    <iframe
+                                                        className="absolute top-0 left-0 w-full h-full pointer-events-none"
+                                                        src={`https://www.youtube.com/embed/${project.video.split('/').pop()?.split('?')[0]}?autoplay=1&mute=1&loop=1&playlist=${project.video.split('/').pop()?.split('?')[0]}&controls=0&modestbranding=1&rel=0`}
+                                                        allow="autoplay; encrypted-media"
+                                                        loading="lazy"
+                                                    />
+                                                </div>
+                                            ) : (
+                                                <video
+                                                    autoPlay
+                                                    loop
+                                                    muted
+                                                    playsInline
+                                                    className="w-full h-40 sm:h-56 object-cover"
+                                                    poster={project.previewImage}
+                                                >
+                                                    <source src={project.video} type="video/mp4" />
+                                                    Browser Anda tidak mendukung pemutaran video.
+                                                </video>
+                                            )
+                                        ) : (
+                                            <img
+                                                className="w-full h-40 sm:h-56 object-cover"
+                                                src={`${project.previewImage}`}
+                                                alt={project.name}
+                                            />
+                                        )}
                                     </div>
 
                                     <div className="text-foreground font-base mt-4 sm:mt-6">
@@ -53,11 +74,13 @@ export default function LatestProject() {
                                     </div>
                                 </div>
 
+                                {/* button rute */}
                                 <div className="mt-6 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-4">
                                     <a
                                         className="border-border bg-background text-foreground shadow-shadow rounded-base font-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY cursor-pointer border-2 px-3 sm:px-4 py-2 text-center text-xs transition-all hover:shadow-none sm:text-sm"
                                         href={project.liveLink}
                                         target="_blank"
+                                        onClick={(e) => e.stopPropagation()}
                                     >
                                         Visit
                                     </a>
@@ -65,9 +88,11 @@ export default function LatestProject() {
                                         className="border-border bg-background text-foreground shadow-shadow rounded-base font-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY cursor-pointer border-2 px-3 sm:px-4 py-2 text-center text-xs transition-all hover:shadow-none sm:text-sm"
                                         href={project.repoUrl}
                                         target="_blank"
+                                        onClick={(e) => e.stopPropagation()}
                                     >
                                         Github
                                     </a>
+
                                 </div>
                             </motion.div>
                         )
