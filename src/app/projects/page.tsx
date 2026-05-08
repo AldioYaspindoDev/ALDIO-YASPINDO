@@ -12,10 +12,23 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
+import { useSearchParams } from 'next/navigation'
 
 
 export default function Work() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  // Ambil halaman dari URL, default ke 1
+  const currentPage = Number(searchParams.get('page')) || 1;
+  const itemsPerPage = 3;
+  
+  // Hitung index data
+  const totalPages = Math.ceil(PROJECTS.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentProjects = PROJECTS.slice(startIndex, endIndex);
+
   return (
     <section className="py-10 w-screen relative left-1/2 -translate-x-1/2 px-4 sm:px-10">
       <div className="max-w-[1200px] mx-auto">
@@ -27,7 +40,7 @@ export default function Work() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-8">
-          {PROJECTS.slice(0, 3).map((project, id) => {
+          {currentProjects.map((project, id) => {
             return (
               <motion.div
                 className="border-border shadow-shadow rounded-base bg-background border-2 p-4 sm:p-5 flex flex-col justify-between transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
@@ -116,26 +129,40 @@ export default function Work() {
       <Pagination>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrevious href="#" />
+            <PaginationPrevious 
+              href={currentPage > 1 ? `?page=${currentPage - 1}` : '#'} 
+              className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
+            />
           </PaginationItem>
+          
+          {Array.from({ length: totalPages }).map((_, i) => {
+            const pageNumber = i + 1;
+            return (
+              <PaginationItem key={pageNumber}>
+                <PaginationLink 
+                  href={`?page=${pageNumber}`} 
+                  isActive={currentPage === pageNumber}
+                >
+                  {pageNumber}
+                </PaginationLink>
+              </PaginationItem>
+            );
+          })}
+
+          {/* Menampilkan ellipsis jika halaman terlalu banyak (opsional, untuk skalabilitas) */}
+          {totalPages > 5 && currentPage < totalPages - 2 && (
+            <div className="items-center md:flex hidden">
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+            </div>
+          )}
+
           <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#" isActive>
-              2
-            </PaginationLink>
-          </PaginationItem>
-          <div className="items-center md:flex hidden">
-            <PaginationItem>
-              <PaginationLink href="#">3</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-          </div>
-          <PaginationItem>
-            <PaginationNext href="#" />
+            <PaginationNext 
+              href={currentPage < totalPages ? `?page=${currentPage + 1}` : '#'} 
+              className={currentPage >= totalPages ? 'pointer-events-none opacity-50' : ''}
+            />
           </PaginationItem>
         </PaginationContent>
       </Pagination>
