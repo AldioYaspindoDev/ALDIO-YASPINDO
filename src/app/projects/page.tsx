@@ -1,8 +1,9 @@
 'use client'
 
+import { Suspense } from 'react'
 import PROJECTS from '@/data/projects'
 import * as motion from "motion/react-client"
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import {
   Pagination,
   PaginationContent,
@@ -12,10 +13,16 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
-import { useSearchParams } from 'next/navigation'
-
 
 export default function Work() {
+  return (
+    <Suspense fallback={<div className="py-10 text-center">Loading projects...</div>}>
+      <ProjectsContent />
+    </Suspense>
+  )
+}
+
+function ProjectsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   
