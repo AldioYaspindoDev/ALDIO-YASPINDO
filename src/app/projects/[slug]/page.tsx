@@ -18,7 +18,7 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
 
   return (
     <div className="w-full">
-      <Button className='w-full p-5 mb-5 text-main bg-background'>
+      <Button className='w-full py-8 my-5 text-main bg-background'>
         <h1 className="text-2xl sm:text-4xl font-heading">{project.name}</h1>
       </Button>
 
@@ -49,13 +49,13 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
           )}
         </div>
 
-        <div className="rounded-base border-2 border-border bg-background p-4 shadow-shadow flex flex-col items-center justify-center">
+        <div className="rounded-base border-2 border-border bg-background p-8 shadow-shadow flex flex-col items-center justify-center">
           <h2 className="font-heading text-lg mb-4">Project Date</h2>
           <Calendar 
             mode="single" 
             selected={date} 
             onSelect={setDate} 
-            className="rounded-md border border-border"
+            className="rounded-md border h-full w-full border-border"
           />
           <p className="mt-4 text-sm font-base">
             Pengerjaan selesai pada: <span className="font-heading">{project.date}</span>

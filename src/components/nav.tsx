@@ -10,6 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Menu, X } from 'lucide-react'
 import * as motion from "motion/react-client"
 import { AnimatePresence } from "motion/react"
+import { MdOutlineFileDownload } from "react-icons/md";
 
 export default function Nav() {
   const path = usePathname()
@@ -57,17 +58,23 @@ export default function Nav() {
         {/* KANAN: Button / ThemeSwitcher */}
         <div className="flex items-center gap-2 sm:gap-3">
           <ThemeSwitcher />
-          <Avatar className='w-8 h-12 sm:w-12 sm:h-16'>
+          <Avatar className='w-8 h-12 sm:w-12 sm:h-12'>
             <AvatarImage src="/Profile.jpg" alt="@shadcn"/>
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
 
-          <Link
-            href="/docs"
-            className="hidden sm:block rounded-full border-2 border-border bg-background px-5 py-1.5 text-sm text-foreground font-heading shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
+          <a
+            href="/MyCV.pdf"
+            download="CV_Muhamad_aldio_yaspindo.pdf"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-full border-2 border-border bg-background px-5 py-1.5 text-sm text-foreground font-heading shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
           >
-            Resume
-          </Link>
+
+            <span>
+              Resume
+            </span>
+            <MdOutlineFileDownload className="font-bold text-xl" />
+          </a>
 
           {/* Hamburger button (Mobile) */}
           <button

@@ -2,11 +2,12 @@
 
 import EXPERIENCES from "@/data/experience"
 import * as motion from "motion/react-client"
+import { Button } from "../ui/button"
 
 export default function Experience() {
   return (
-    <div className="mb-12 sm:mb-16">
-      <h2 className="mb-6 sm:mb-8 text-lg sm:text-xl font-heading md:text-2xl">Experience</h2>
+    <div className="mb-8 sm:mb-12 rounded-base border-2 border-border bg-background p-4 sm:p-6 shadow-shadow">
+      <Button className="mb-6 sm:mb-8 text-lg sm:text-xl font-heading md:text-2xl">Experience</Button>
 
       <div className="flex flex-col gap-3 sm:gap-4">
         {EXPERIENCES.map((exp, id) => (

@@ -49,10 +49,10 @@ export default function Links() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <Image className='dark:invert mx-auto md:mx-0' src={'/Logo-WD.png'} alt='Logo' width={80} height={80} />
+            <Image className='dark:invert mx-auto md:mx-0' src={'/Logo-WD.png'} alt='Logo' width={180} height={180} />
             <h2 className="text-2xl sm:text-3xl font-heading pt-4 sm:pt-6 text-foreground md:text-5xl tracking-tight leading-tight">
-              Let&apos;s Build Something <br />
-              <span className="text-main underline decoration-4 underline-offset-8">Amazing Together.</span>
+              Way Dev<br />
+              <span className="text-main underline decoration-4 underline-offset-8">By Aldio Yaspindo</span>
             </h2>
             <p className="mt-4 sm:mt-6 text-foreground/60 font-base text-sm sm:text-lg leading-relaxed">
               Saya selalu terbuka untuk proyek baru, kolaborasi, atau sekadar menyapa. 

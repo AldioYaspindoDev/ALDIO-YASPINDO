@@ -2,16 +2,19 @@
 
 import SKILLS from '@/data/skills'
 import * as motion from "motion/react-client"
+import { Button } from '../ui/button'
 
 export default function Skills() {
   return (
-    <div className="mb-12 sm:mb-16">
-      <h2 className="mb-6 sm:mb-8 text-lg sm:text-xl font-heading md:text-2xl">Skills</h2>
+    <div className="mb-8 sm:mb-12 rounded-base border-2 border-border bg-background p-4 sm:p-6 shadow-shadow">
+      <Button className="mb-6 sm:mb-8 text-lg sm:text-xl font-heading md:text-2xl">
+        <span className='text-base sm:text-lg font-heading'>Skills</span>
+      </Button>
 
       {SKILLS.map((item, id) => (
         <motion.div
           key={id}
-          className="mb-8 sm:mb-10"
+          className="mb-6 sm:mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}

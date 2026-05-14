@@ -15,11 +15,11 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Crafting Digital <br />
+          Way Developer <br />
           <Button className="relative p-4 sm:p-7 text-main text-3xl sm:text-5xl bg-background">
-            Experiences
+            Software
           </Button>{" "}
-          Through Code.
+          Engineer.
         </motion.h1>
         
         <motion.p
@@ -38,8 +38,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
         >
-          I specialize in building robust, scalable, and user-centric web applications 
-          that turn complex problems into elegant digital solutions.
+          The Way Developer: Building paths from complex problems to seamless solutions
         </motion.p>
 
         <motion.div
@@ -49,17 +48,21 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
         >
           <a
-            href="/docs"
+            href="/MyCV.pdf"
+            target="_blank" 
+            rel="noopener noreferrer"
             className="flex items-center justify-center gap-2.5 rounded-base border-2 border-border bg-background px-6 sm:px-8 py-3 text-base sm:text-lg font-heading shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
           >
             View My Resume
             <ArrowUpRight className="size-5" />
           </a>
           <a
-            href="/work"
+            href="https://www.linkedin.com/in/muhammad-aldio-yaspindo/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center justify-center gap-2.5 rounded-base border-2 border-border bg-background px-6 sm:px-8 py-3 text-base sm:text-lg font-heading shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
           >
-            See My Work
+            See My Linkedin
           </a>
         </motion.div>
       </div>
