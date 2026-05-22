@@ -10,6 +10,10 @@ const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Muhamad Aldio Yaspindo',
+  icons: {
+    icon: '/iconwd.png',
+    shortcut: '/iconwd.png',
+  },
 }
 
 export default function RootLayout({

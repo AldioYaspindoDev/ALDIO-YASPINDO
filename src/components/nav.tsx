@@ -34,6 +34,8 @@ export default function Nav() {
               alt={'Logo'}
               width={105}
               height={105}
+              loading="eager"
+              style={{ height: 'auto' }}
               className="dark:invert w-16 sm:w-[105px]"
             />
           </Link>
