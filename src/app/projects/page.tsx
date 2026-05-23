@@ -13,6 +13,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from '@/components/ui/pagination'
+import Certificate from '@/components/certificate'
 
 export default function Work() {
   return (
@@ -173,7 +174,14 @@ function ProjectsContent() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-
+    
+      </div>
+      <div className="mt-20">
+          <h2 className="text-xl sm:text-2xl text-center md:text-4xl pb-2 font-heading">CERTIFICATE</h2>
+          <p className="text-sm sm:text-base md:text-xl text-center pb-8 sm:pb-12 font-base max-w-2xl mx-auto px-2">
+            Berikut adalah sertifikat sertifikat yang saya dapatkan
+          </p>
+      <Certificate />
       </div>
     </section>
   )
