@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Calendar } from "@/components/ui/calendar"
 import { useState, use } from "react"
+import { ArrowUpRight } from "lucide-react";
 
 export default function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = use(params);
@@ -17,7 +18,7 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
   const [date, setDate] = useState<Date | undefined>(new Date(project.date))
 
   return (
-    <div className="w-full">
+    <div className="mb-8 sm:mb-12 rounded-base border-2 border-border bg-background p-4 sm:p-6 shadow-shadow">
       <Button className='w-full py-8 my-5 text-main bg-background'>
         <h1 className="text-2xl sm:text-4xl font-heading">{project.name}</h1>
       </Button>
@@ -64,10 +65,16 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
       </div>
 
       <div className='mb-8 sm:mb-12 rounded-base border-2 border-border bg-background p-4 sm:p-6 shadow-shadow'>
-        <h2 className='font-heading text-lg sm:text-xl md:text-2xl text-foreground mb-2'>Description</h2>
-        <p className="text-lg text-justify mb-4">{project.description}</p>
+        <Button className="mb-2 sm:mb-4 text-lg sm:text-xl font-heading md:text-2xl"> Description </Button>
+        <p className="text-xs mb-2 sm:mb-6 sm:text-sm font-base leading-relaxed text-justify">{project.description}</p>
 
-        <h2 className='font-heading text-lg sm:text-xl md:text-2xl text-foreground mb-2'> Tool </h2>
+        <Button className='mb-2 sm:mb-4 text-lg sm:text-xl font-heading md:text-2xl'> Problem </Button>
+        <p className="text-xs mb-2 sm:mb-6 sm:text-sm font-base leading-relaxed text-justify">{project.problem}</p>
+
+        <Button className='mb-2 sm:mb-4 text-lg sm:text-xl font-heading md:text-2xl'> Solution </Button>
+        <p className="text-xs mb-2 sm:mb-6 sm:text-sm font-base leading-relaxed text-justify">{project.solution}</p>
+
+        <Button className='mb-2 sm:mb-4 text-lg sm:text-xl font-heading md:text-2xl'> Tool </Button>
 
         <div className="flex flex-wrap gap-2 sm:gap-3">
             {project.skills.map((skill, idx) => (
@@ -82,6 +89,13 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
           </div>
         
       </div>
+          <Button 
+          className='mb-2 sm:mb-4 text-lg sm:text-xl font-heading md:text-2xl' 
+          onClick={() => window.open(project.liveLink, '_blank')}
+        >
+          Visit Website
+          <ArrowUpRight className="size-5" />
+        </Button>
     </div>
   );
 }

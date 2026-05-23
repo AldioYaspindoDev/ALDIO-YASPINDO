@@ -30,6 +30,8 @@ const PROJECTS: {
   slug: string
   name: string
   description: string
+  problem: string
+  solution: string
   previewImage: string
   video: string
   date: string
@@ -40,7 +42,9 @@ const PROJECTS: {
   {
     slug: 'ethr',
     name: 'Ethereal Kreatif',
-    description: 'Ethereal Kreatif is a web-based application designed to help Ethereal company market their clothing products. Customers can easily browse the clothing catalog and place orders directly. The main goal of building this website is to drive digitalization and improve the quality of MSMEs (Micro, Small, and Medium Enterprises) in Padang.',
+    description: `Ethereal Kreatif adalah aplikasi berbasis web yang dirancang untuk membantu perusahaan Ethereal memasarkan produk pakaian mereka. Pelanggan dapat dengan mudah menelusuri katalog pakaian dan melakukan pemesanan secara langsung. Tujuan utama pembuatan situs web ini adalah untuk mendorong digitalisasi dan meningkatkan kualitas UMKM (Usaha Mikro, Kecil, dan Menengah) di kota Padang.`,
+    problem: `Sebelum adanya pengembangan sistem digital, perusahaan penjualan dan produksi baju serta sablon ini menghadapi berbagai tantangan yang berdampak langsung pada pertumbuhan bisnis. Penjualan yang masih berfokus secara offline mulai mengalami penurunan minat sejak masyarakat beralih ke platform e-commerce yang lebih praktis dan cepat. Selain itu, jangkauan pemasaran perusahaan hanya terbatas di dalam kota sehingga potensi pasar yang lebih luas belum dapat dimanfaatkan secara maksimal. Keterbatasan strategi promosi dan media pemasaran juga menyebabkan produk kurang dikenal oleh calon pelanggan di luar wilayah lokal, sehingga daya saing perusahaan menjadi semakin rendah di era digital saat ini.`,
+    solution: `Sebagai solusi, dikembangkan sebuah website modern yang responsif dan dapat diakses dengan optimal melalui perangkat mobile maupun desktop untuk memberikan pengalaman pengguna yang lebih nyaman. Website ini dilengkapi dengan katalog produk interaktif beserta detail produk yang informatif, sehingga memudahkan pelanggan dalam memilih produk sesuai kebutuhan. Proses pemesanan dibuat lebih praktis melalui integrasi langsung ke WhatsApp serta sistem keranjang belanja yang responsif dan mudah digunakan. Dengan memanfaatkan teknologi JavaScript modern, proses pemesanan dapat dilakukan secara realtime sehingga meningkatkan kecepatan dan efisiensi layanan. Kehadiran website ini diharapkan mampu memperluas jangkauan pemasaran, meningkatkan daya tarik pelanggan, serta membantu perusahaan meningkatkan penjualan secara lebih efektif di era digital.`,
     video: '/ethr/ethr-mp4.mp4',
     date: '2025-07-15',
     liveLink: 'https://ethereal-kreatif-3wrunekc7-aldioyaspindodevs-projects.vercel.app/',
@@ -58,7 +62,9 @@ const PROJECTS: {
   {
     slug: 'cntg',
     name: 'Cantigi Rent Car',
-    description: 'The Vehicle Rental Booking System of PT. Cantigi International Tours is a web-based platform designed to make online vehicle rental easy. It includes vehicle management, customer bookings, driver coordination, payment processing, and transaction reporting. Our goal: improve operational efficiency and customer comfort, while also boosting the quality of MSMEs in Padang.',
+    description: 'Sistem Pemesanan Sewa Kendaraan PT. Cantigi International Tours adalah platform berbasis web yang dirancang untuk memudahkan penyewaan kendaraan secara online. Sistem ini mencakup manajemen kendaraan, pemesanan pelanggan, koordinasi pengemudi, pemrosesan pembayaran, dan pelaporan transaksi. Tujuan kami: meningkatkan efisiensi operasional dan kenyamanan pelanggan, sekaligus meningkatkan kualitas UMKM di Padang.',
+     problem: 'Sebelum sistem digital diterapkan, perusahaan rental kendaraan masih menghadapi berbagai kendala operasional yang menghambat perkembangan bisnis. Jangkauan layanan rental hanya terbatas pada satu daerah sehingga peluang untuk menjangkau pelanggan yang lebih luas belum dapat dimaksimalkan. Selain itu, calon pelanggan harus datang langsung ke lokasi hanya untuk melihat daftar kendaraan dan mengetahui harga sewa, yang tentunya kurang efisien di era serba digital saat ini. Proses booking dan pencatatan transaksi juga masih dilakukan secara manual menggunakan buku, sehingga berisiko menyebabkan kesalahan pencatatan, kehilangan data, serta menyulitkan perusahaan dalam mengelola laporan keuangan secara akurat dan cepat.',
+    solution: 'Untuk mengatasi permasalahan tersebut, dikembangkan sebuah website rental kendaraan online dengan sistem booking realtime yang memungkinkan pelanggan melakukan pemesanan langsung dari rumah secara praktis dan efisien. Website dirancang dengan tampilan yang minimalis, modern, dan responsif agar nyaman diakses melalui perangkat mobile maupun desktop. Pengguna dapat melihat ketersediaan kendaraan secara realtime lengkap dengan spesifikasi, harga sewa, dan syarat penyewaan sehingga proses pengambilan keputusan menjadi lebih mudah. Selain itu, sistem dilengkapi dengan pencatatan keuangan digital untuk membantu pengelolaan transaksi yang lebih rapi dan terstruktur, serta integrasi pembayaran menggunakan Midtrans yang aman dan terpercaya untuk meningkatkan kenyamanan dan keamanan transaksi pelanggan. Dengan adanya website ini, diharapkan perusahaan dapat memperluas jangkauan pasar, meningkatkan efisiensi operasional, serta memberikan pengalaman penyewaan kendaraan yang lebih baik bagi pelanggan di era digital saat ini.',
     video: '',
     date: '2025-07-16',
     liveLink: 'https://cantigitours.com',
@@ -74,7 +80,9 @@ const PROJECTS: {
   {
     slug: 'elgc',
     name: 'Ellegance Shoes',
-    description: 'Ellegance Shoes is a web-based application designed to help Ellegance Shoes market their leather shoes products. Customers can easily browse the leather shoes catalog and place orders directly. The main goal of building this website is to drive digitalization and improve the quality of MSMEs (Micro, Small, and Medium Enterprises) in Padang.',
+    description: `Ellegance Shoes adalah aplikasi berbasis web yang dirancang untuk membantu Ellegance Shoes memasarkan produk sepatu kulit mereka. Pelanggan dapat dengan mudah menelusuri katalog sepatu kulit dan melakukan pemesanan langsung. Tujuan utama pembuatan situs web ini adalah untuk mendorong digitalisasi dan meningkatkan kualitas UMKM (Usaha Mikro, Kecil, dan Menengah) di Padang`,
+    problem: '',
+    solution: '',
     video: '',
     date: '2024-10-10',
     liveLink: 'https://ellegance-apps-hgtvhgj2l-aldioyaspindodevs-projects.vercel.app/',
@@ -93,6 +101,8 @@ const PROJECTS: {
     slug: 'shmk',
     name: 'Sahamku',
     description: 'Buat Prediksi Harga Saham Yang Kamu Mau Kami memprediksi harga saham-saham besar US sebagai landasan kamu dalam mengambil keputusan investasi yang lebih cerdas',
+    problem: '',
+    solution: '', 
     video: '',
     date: '2025-01-01',
     liveLink: 'https://google.com',
@@ -111,6 +121,8 @@ const PROJECTS: {
     slug: 'comingsoon',
     name: 'Cooming Soon',
     description: 'Lorem ipsum dolor sit amet',
+    problem: '',
+    solution: '',
     video: '',
     date: '2025-01-01',
     liveLink: 'https://google.com',
