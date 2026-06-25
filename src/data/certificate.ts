@@ -30,6 +30,11 @@ export const CERTIFICATE: {
         description: 'Sertifikat ini menunjukkan bahwa saya telah menyelesaikan kursus Belajar Gen AI di Dicoding.'
     },
     {
+        image: '/certificate/SpecDrivenKiro.jpg',
+        nameCertificate: 'Dicoding - Spec Driven Development dengan Kiro',
+        description: 'Sertifikat ini menunjukkan bahwa saya telah menyelesaikan kursus Membangun Spec Driven Development menggunakan IDE KIRO.'
+    },
+    {
         image: '/certificate/HuwaweiICTAcademyMechineLearning.png',
         nameCertificate: 'Huwawei ICT Academy - Machine Learning',
         description: 'Sertifikat ini menunjukkan bahwa saya telah menyelesaikan kursus Machine Learning di Huawei ICT Academy.'

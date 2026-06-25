@@ -11,11 +11,14 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
   const resolvedParams = use(params);
   const project = PROJECTS.find((p) => p.slug === resolvedParams.slug);
 
+  // Hook must be called unconditionally, before any early return
+  const [date, setDate] = useState<Date | undefined>(
+    project ? new Date(project.date) : undefined
+  );
+
   if (!project) {
     return notFound();
   }
-
-  const [date, setDate] = useState<Date | undefined>(new Date(project.date))
 
   return (
     <div className="mb-8 sm:mb-12 rounded-base border-2 border-border bg-background p-4 sm:p-6 shadow-shadow">

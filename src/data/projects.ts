@@ -23,7 +23,8 @@ import {
   SiGithub,
   SiNestjs,
   SiPhp,
-  SiLaravel
+  SiLaravel,
+  SiVite
 } from '@icons-pack/react-simple-icons'
 
 const PROJECTS: {
@@ -97,9 +98,29 @@ const PROJECTS: {
       { skill: 'Tailwind CSS', icon: SiTailwindcss },
     ],
   },
+   {
+    slug: 'arcn',
+    name: 'ArecaNut Grade AI',
+    description: `ArecaNut Grade AI adalah platform Website dan Aplikasi Mobile yang dibangun untuk membantu para petani maupun perusahaan yang bergerak dibidang pertanian pengolahan biji pinang, agar dapat dengan cepat dan akuran dalam memprediksi Jenis pinang, Tingkat Kekeringan nya serta Harga dari pinang tersebut bedasarkan AI yang canggih.`,
+    problem: '',
+    solution: '',
+    video: '',
+    date: '2026-06-25',
+    liveLink: 'https://areca-nut-grade-apps.vercel.app/',
+    previewImage: '/arcn/Main.png',
+    repoUrl: 'https://github.com/AldioYaspindoDev/ARECA-NUT-GRADE-APPS',
+    skills: [
+      { skill: 'FastAPI', icon: SiFastapi },
+      { skill: 'React', icon: SiReact },
+      { skill: 'Vite', icon: SiVite },
+      { skill: 'ReactNative', icon: SiReact },
+      { skill: 'MySQL', icon: SiMysql },
+      { skill: 'Tailwind CSS', icon: SiTailwindcss },
+    ],
+  },
   {
     slug: 'shmk',
-    name: 'Sahamku',
+    name: 'SahamKu',
     description: 'Buat Prediksi Harga Saham Yang Kamu Mau Kami memprediksi harga saham-saham besar US sebagai landasan kamu dalam mengambil keputusan investasi yang lebih cerdas',
     problem: '',
     solution: '', 
@@ -126,7 +147,7 @@ const PROJECTS: {
     video: '',
     date: '2025-01-01',
     liveLink: 'https://google.com',
-    previewImage: '/CoomingSooon.png',
+    previewImage: '/comingsoon.png',
     repoUrl: 'https://github.com',
     skills: [
       { skill: 'Node.js', icon: SiNodedotjs },
