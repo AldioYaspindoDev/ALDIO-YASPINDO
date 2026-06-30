@@ -1,11 +1,45 @@
 'use client'
 
-import PROJECTS from '@/data/projects'
+// import PROJECTS from '@/data/projects'
 import * as motion from "motion/react-client"
 import { useRouter } from 'next/navigation'
+import { API_BASE_URL } from "@/lib/constant";
+import { portfolioService } from "@/service/portfolioService";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
 
 export default function LatestProject() {
+    const [portfolio, setPortfolio] = useState<any[]>([]);
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
+
+    const GetPortofolio = async () => { 
+        try {
+            setLoading(true); 
+            const response = await portfolioService.getAllPortfolio();
+            const data = response.data?.data || response.data || [];
+            setPortfolio(Array.isArray(data) ? data : []);
+        } catch (error) {
+            console.log("gagal mendapatkan data", error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    useEffect(() => {
+        GetPortofolio();
+    }, []);
+
+    const getImageUrl = (imagePath: string | null | undefined) => {
+    if (!imagePath) return "/placeholder.svg";
+    if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+      return imagePath;
+    }
+    // Remove leading slash if any to avoid double slashes
+    const cleanPath = imagePath.startsWith("/") ? imagePath.slice(1) : imagePath;
+    return `${API_BASE_URL}${cleanPath}`;
+  };
 
     return (
         <section className="py-10 w-screen relative left-1/2 -translate-x-1/2 px-4 sm:px-10">
@@ -18,7 +52,7 @@ export default function LatestProject() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-8">
-                    {PROJECTS.slice(0, 3).map((project, id) => {
+                    {portfolio.slice(0, 3).map((setPortfolio, id) => {
                         return (
                             <motion.div
                                 className="border-border shadow-shadow rounded-base bg-background border-2 p-4 sm:p-5 flex flex-col justify-between transition-all hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
@@ -27,16 +61,16 @@ export default function LatestProject() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, amount: 0.2 }}
                                 transition={{ duration: 0.5, delay: id * 0.15, ease: "easeOut" }}
-                                onClick={() => router.push(`/projects/${project.slug}`)}
+                                onClick={() => router.push(`/projects/${setPortfolio.slug}`)}
                             >
                                 <div>
                                     <div className="border-border shadow-shadow rounded-base border-2 overflow-hidden bg-background">
-                                        {project.video ? (
-                                            project.video.includes('youtube.com') || project.video.includes('youtu.be') ? (
+                                        {setPortfolio.video ? (
+                                            setPortfolio.video.includes('youtube.com') || setPortfolio.video.includes('youtu.be') ? (
                                                 <div className="w-full h-40 sm:h-56 relative">
                                                     <iframe
                                                         className="absolute top-0 left-0 w-full h-full pointer-events-none"
-                                                        src={`https://www.youtube.com/embed/${project.video.split('/').pop()?.split('?')[0]}?autoplay=1&mute=1&loop=1&playlist=${project.video.split('/').pop()?.split('?')[0]}&controls=0&modestbranding=1&rel=0`}
+                                                        src={`https://www.youtube.com/embed/${setPortfolio.video.split('/').pop()?.split('?')[0]}?autoplay=1&mute=1&loop=1&playlist=${setPortfolio.video.split('/').pop()?.split('?')[0]}&controls=0&modestbranding=1&rel=0`}
                                                         allow="autoplay; encrypted-media"
                                                         loading="lazy"
                                                     />
@@ -48,28 +82,28 @@ export default function LatestProject() {
                                                     muted
                                                     playsInline
                                                     className="w-full h-40 sm:h-56 object-cover"
-                                                    poster={project.previewImage}
+                                                    poster={setPortfolio.previewImage}
                                                 >
-                                                    <source src={project.video} type="video/mp4" />
+                                                    <source src={setPortfolio.video} type="video/mp4" />
                                                     Browser Anda tidak mendukung pemutaran video.
                                                 </video>
                                             )
                                         ) : (
                                             <img
                                                 className="w-full h-40 sm:h-56 object-cover"
-                                                src={`${project.previewImage}`}
-                                                alt={project.name}
+                                                src={`${setPortfolio.previewImage}`}
+                                                alt={setPortfolio.name}
                                             />
                                         )}
                                     </div>
 
                                     <div className="text-foreground font-base mt-4 sm:mt-6">
                                         <h2 className="font-heading text-lg sm:text-xl md:text-2xl">
-                                            {project.name}
+                                            {setPortfolio.name}
                                         </h2>
 
                                         <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base line-clamp-3 opacity-90">
-                                            {project.description}
+                                            {setPortfolio.description}
                                         </p>
                                     </div>
                                 </div>
@@ -78,7 +112,7 @@ export default function LatestProject() {
                                 <div className="mt-6 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-4">
                                     <a
                                         className="border-border bg-background text-foreground shadow-shadow rounded-base font-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY cursor-pointer border-2 px-3 sm:px-4 py-2 text-center text-xs transition-all hover:shadow-none sm:text-sm"
-                                        href={project.liveLink}
+                                        href={setPortfolio.liveLink}
                                         target="_blank"
                                         onClick={(e) => e.stopPropagation()}
                                     >
@@ -86,7 +120,7 @@ export default function LatestProject() {
                                     </a>
                                     <a
                                         className="border-border bg-background text-foreground shadow-shadow rounded-base font-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY cursor-pointer border-2 px-3 sm:px-4 py-2 text-center text-xs transition-all hover:shadow-none sm:text-sm"
-                                        href={project.repoUrl}
+                                        href={setPortfolio.repoUrl}
                                         target="_blank"
                                         onClick={(e) => e.stopPropagation()}
                                     >
